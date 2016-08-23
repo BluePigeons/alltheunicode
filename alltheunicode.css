@@ -1,0 +1,48 @@
+
+
+.atu-blockMenu {
+  width: 100%;
+}
+
+.optionsDropdown {
+  width: 100%;
+}
+
+.sameWidth {
+  width: 6.25%;
+  min-width: 20px;
+  height: 100%;
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.c {
+  text-align: center;
+  font-size: 1em;
+}
+
+.keyboardHandlebar {
+  background-color: buttonface;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.optionRows {
+  background-color: grey;
+  padding: 5px;
+  font-size: 0.875em;
+  display: none;
+}
+
+.bottomOptionRow {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.theKeys {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+}
+.atu-options-btn {
+  display: inline-block;
+}
