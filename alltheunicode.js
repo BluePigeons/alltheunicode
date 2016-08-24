@@ -156,7 +156,7 @@ var noto_emoji_colour_fonts =
 
 var atu_all_font_names_array = [];
 var atu_the_font_array = [];
-var atu_new_style = document.createElement('style');
+//var atu_new_style = document.createElement('style');
 
 var atu_font_file_endindex = function(file_name){
   if (file_name.indexOf(".ttc") != -1) {
@@ -1046,6 +1046,19 @@ var atu_initialise_setup = function(atu_parent_id) {
   $("#"+atu_parent_id).on("click", ".atu-next-btn", function(event){
     buildMap(findMapID(event.target), toHex4(startPosition + 256));
   });
+
+  $("#"+atu_parent_id).on("mouseover", ".c", function(event){
+//////show value????
+  });
+
+  var atu_new_style = document.createElement('style');
+  atu_new_style.appendChild(document.createTextNode(`
+@import url(https://cdn.rawgit.com/BluePigeons/alltheunicode/master/atu_fonts.css);
+.c {
+  font-family:  notocoloremoji, notoemoji-regular, notosanstc-regular, notosanssc-regular, notosansmonocjktc-regular, notosansmonocjksc-regular, notosansmonocjkkr-regular, notosansmonocjkjp-regular, notosanskr-regular, notosansjp-regular, notosanscjktc-regular, notosanscjksc-regular, notosanscjkkr-regular, notosanscjkjp-regular, notosanscjk-regular, notoserifthai-regular, notoseriftelugu-regular, notoseriftamil-regular, notoserifmalayalam-regular, notoseriflao-regular, notoserifkhmer-regular, notoserifkannada-regular, notoserifgujarati-regular, notoserifgeorgian-regular, notoserifdevanagari-regular, notoserifbengali-regular, notoserifarmenian-regular, notoserif-regular, notosansyi-regular, notosansvai-regular, notosansugaritic-regular, notosansui-regular, notosanstifinagh-regular, notosanstibetan-regular, notosansthaiui-regular, notosansthai-regular, notosansthaana-regular, notosansteluguui-regular, notosanstelugu-regular, notosanstamilui-regular, notosanstamil-regular, notosanstaiviet-regular, notosanstaitham-regular, notosanstaile-regular, notosanstagbanwa-regular, notosanstagalog-regular, notosanssyriacwestern-regular, notosanssyriacestrangela-regular, notosanssyriaceastern-regular, notosanssymbols-regular, notosanssylotinagri-regular, notosanssundanese-regular, notosanssinhala-regular, notosansshavian-regular, notosanssaurashtra-regular, notosanssamaritan-regular, notosansrunic-regular, notosansrejang-regular, notosansphoenician-regular, notosansphagspa-regular, notosansosmanya-regular, notosansoriyaui-regular, notosansoriya-regular, notosansoldturkic-regular, notosansoldsoutharabian-regular, notosansoldpersian-regular, notosansolditalic-regular, notosansolchiki-regular, notosansogham-regular, notosansnewtailue-regular, notosansnko-regular, notosansmyanmarui-regular, notosansmyanmar-regular, notosansmongolian-regular, notosansmeeteimayek-regular, notosansmandaic-regular, notosansmalayalamui-regular, notosansmalayalam-regular, notosanslydian-regular, notosanslycian-regular, notosanslisu-regular, notosanslinearb-regular, notosanslimbu-regular, notosanslepcha-regular, notosanslaoui-regular, notosanslao-regular, notosanskhmerui-regular, notosanskhmer-regular, notosanskharoshthi-regular, notosanskayahli-regular, notosanskannadaui-regular, notosanskannada-regular, notosanskaithi-regular, notosansjavanese-regular, notosansinscriptionalparthian-regular, notosansinscriptionalpahlavi-regular, notosansimperialaramaic-regular, notosanshebrew-regular, notosanshanunoo-regular, notosansgurmukhiui-regular, notosansgurmukhi-regular, notosansgujaratiui-regular, notosansgujarati-regular, notosansgothic-regular, notosansglagolitic-regular, notosansgeorgian-regular, notosansethiopic-regular, notosansegyptianhieroglyphs-regular, notosansdevanagariui-regular, notosansdevanagari-regular, notosansdeseret-regular, notosanscypriot-regular, notosanscuneiform-regular, notosanscoptic-regular, notosanscherokee-regular, notosanscham-regular, notosanscarian-regular, notosanscanadianaboriginal-regular, notosansbuhid-regular, notosansbuginese-regular, notosansbrahmi-regular, notosansbengaliui-regular, notosansbengali-regular, notosansbatak-regular, notosansbamum-regular, notosansbalinese-regular, notosansavestan-regular, notosansarmenian-regular, notosans-regular, notosans-regular, notonastaliqurdu-regular, notonaskharabicui-regular, notonaskharabic-regular, notokufiarabic-regular, lastresort, Helvetica, Arial, sans-serif ;
+}
+  `));
+  document.head.appendChild(atu_new_style);
 
   atu_has_setup_initialised = true;
 
