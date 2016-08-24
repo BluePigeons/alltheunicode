@@ -46,3 +46,9 @@
 .atu-options-btn {
   display: inline-block;
 }
+
+.atu-mapPopupBody {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
