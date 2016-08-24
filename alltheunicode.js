@@ -7,7 +7,7 @@
 ////////long term would like to use the promises of FontFaceFaceObserver for loading fonts 
 ////////see https://github.com/bramstein/fontfaceobserver and https://www.filamentgroup.com/lab/font-events.html for more info
 
-var noto_font_src = "fonts/noto-unhinted/"; 
+var noto_font_src = "fonts/noto_unhinted/"; 
 var noto_fonts = 
 `NotoKufiArabic-Regular.ttf  
 NotoNaskhArabic-Regular.ttf   
@@ -130,7 +130,7 @@ NotoSerifTelugu-Regular.ttf
 NotoSerifThai-Regular.ttf`;
 
 
-var noto_cjk_font_src = "fonts/noto-cjk/"; 
+var noto_cjk_font_src = "fonts/noto_cjk/"; 
 var noto_cjk_fonts = 
 `NotoSansCJK-Regular.ttc 
 NotoSansCJKjp-Regular.otf 
@@ -146,11 +146,11 @@ NotoSansMonoCJKtc-Regular.otf
 NotoSansSC-Regular.otf 
 NotoSansTC-Regular.otf`;
 
-var noto_emoji_regular_font_src = `fonts/noto-emojis/`;
+var noto_emoji_regular_font_src = `fonts/noto_emojis/`;
 var noto_emoji_regular_fonts = 
 `NotoEmoji-Regular.ttf`;
 
-var noto_emoji_colour_font_src = `fonts/noto-emojis/`;
+var noto_emoji_colour_font_src = `fonts/noto_emojis/`;
 var noto_emoji_colour_fonts = 
 `NotoColorEmoji.ttf`;
 
@@ -191,7 +191,8 @@ var atu_set_fonts = function(font_file_list, font_src, unicode_range) {
     //atu_new_style.appendChild(document.createTextNode(atu_new_font_face));
   });
 };
-
+/////use the following to update values of font lists in CSS
+/*
 atu_set_fonts(noto_fonts, noto_font_src, "U+??");
 atu_set_fonts(noto_cjk_fonts, noto_cjk_font_src, "U+??");
 atu_set_fonts(noto_emoji_regular_fonts, noto_emoji_regular_font_src, "U+??");
@@ -207,7 +208,7 @@ var atu_set_current_font = function(thisDOM) {
   var font_family = atu_detect_tofu(thisDOM);
   $(thisDOM).css("font-family", font_family);
 };
-/*
+
 atu_new_style.appendChild(document.createTextNode(`
 .c {
   font-family: `+atu_all_font_family+` ;

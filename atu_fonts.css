@@ -721,79 +721,79 @@
       
 @font-face {
     font-family: notosanscjk-regular;
-    src: url('fonts/noto_cjk/NotoSansCJK-Regular.ttc ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansCJK-Regular.ttc ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanscjkjp-regular;
-    src: url('fonts/noto_cjk/NotoSansCJKjp-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansCJKjp-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanscjkkr-regular;
-    src: url('fonts/noto_cjk/NotoSansCJKkr-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansCJKkr-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanscjksc-regular;
-    src: url('fonts/noto_cjk/NotoSansCJKsc-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansCJKsc-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanscjktc-regular;
-    src: url('fonts/noto_cjk/NotoSansCJKtc-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansCJKtc-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosansjp-regular;
-    src: url('fonts/noto_cjk/NotoSansJP-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansJP-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanskr-regular;
-    src: url('fonts/noto_cjk/NotoSansKR-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansKR-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosansmonocjkjp-regular;
-    src: url('fonts/noto_cjk/NotoSansMonoCJKjp-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansMonoCJKjp-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosansmonocjkkr-regular;
-    src: url('fonts/noto_cjk/NotoSansMonoCJKkr-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansMonoCJKkr-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosansmonocjksc-regular;
-    src: url('fonts/noto_cjk/NotoSansMonoCJKsc-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansMonoCJKsc-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosansmonocjktc-regular;
-    src: url('fonts/noto_cjk/NotoSansMonoCJKtc-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansMonoCJKtc-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanssc-regular;
-    src: url('fonts/noto_cjk/NotoSansSC-Regular.otf ') ;
+    src: url('fonts/noto_extra_cjk/NotoSansSC-Regular.otf ') ;
     unicode-range: U+??;
 }
       
 @font-face {
     font-family: notosanstc-regular;
-    src: url('fonts/noto_cjk/NotoSansTC-Regular.otf') ;
+    src: url('fonts/noto_extra_cjk/NotoSansTC-Regular.otf') ;
     unicode-range: U+??;
 }
       
