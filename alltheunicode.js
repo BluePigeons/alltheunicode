@@ -155,6 +155,7 @@ var noto_emoji_colour_fonts =
 `NotoColorEmoji.ttf`;
 
 var atu_all_font_names_array = [];
+var atu_the_font_array = [];
 var atu_new_style = document.createElement('style');
 
 var atu_font_file_endindex = function(file_name){
@@ -185,7 +186,9 @@ var atu_set_fonts = function(font_file_list, font_src, unicode_range) {
     unicode-range: `+unicode_range+`;
 }
       `;
-    atu_new_style.appendChild(document.createTextNode(atu_new_font_face));
+
+    atu_the_font_array.unshift({ "name": atu_font_name, "CSS": atu_new_font_face, "file": font_src + font_file  });
+    //atu_new_style.appendChild(document.createTextNode(atu_new_font_face));
   });
 };
 
@@ -195,14 +198,24 @@ atu_set_fonts(noto_emoji_regular_fonts, noto_emoji_regular_font_src, "U+??");
 atu_set_fonts(noto_emoji_colour_fonts, noto_emoji_colour_font_src, "U+??");
 
 var atu_all_font_family = atu_all_font_names_array.toString() + `, Helvetica, Arial, sans-serif`;
-var atu_new_font_family = `
+
+var atu_detect_tofu = function(thisDOM){
+/////
+};
+
+var atu_set_current_font = function(thisDOM) {
+  var font_family = atu_detect_tofu(thisDOM);
+  $(thisDOM).css("font-family", font_family);
+};
+/*
+atu_new_style.appendChild(document.createTextNode(`
 .c {
-  font-family: `+atu_all_font_family+`;
+  font-family: `+atu_all_font_family+` ;
 }
-`;
-atu_new_style.appendChild(document.createTextNode(atu_new_font_family));
+  `));
 
 document.head.appendChild(atu_new_style);
+*/
 
 var atu_main_HTML = `
 
@@ -410,7 +423,9 @@ var hexMax = 0x10FFFF;
 //////TYPING///////
 
 function addstr(addition) {
-  if (!isUseless(atu_the_data)) {  atu_the_data.value += addition;  };
+  if (!isUseless(atu_the_data)) {  
+    atu_the_data.value += addition;  
+  };
 }
 
 function add(code) {
