@@ -956,6 +956,17 @@ var findMapID = function(theThis) {
   return $(theThis).closest(".fullunicodesupportkeyboard").find(".atu-mapPopupBody").attr("id");
 };
 
+////// INITIALISATION 
+
+var atu_IME_HTML = `
+      <div class='polyanno-lang-selector polyanno-enable-IME-opt'>
+        <select name="language" id="polyanno-lang-selector">
+        </select>
+      </div>
+      <div class='polyanno-ime-selector polyanno-enable-IME-opt'>
+        <select id="polyanno-ime-selector"></select>
+      </div>
+`;
 
 var addIMEoptions = function(thisArea) {
 
@@ -994,9 +1005,58 @@ var addIMEoptions = function(thisArea) {
     } );
   } );
 
-};
+}; 
 
-////// INITIALISATION   
+var atu_no_of_scripts_loaded = 0;
+
+var atu_load_scripts = function(the_src) {
+
+  var atu_script = document.createElement( 'script' );
+  atu_script.type = 'text/javascript';
+  //atu_script.async = true; ////???
+  atu_script.setAttribute( 'src', the_src );
+  atu_script.onload = function() {
+    atu_no_of_scripts_loaded += 1;
+  };
+  document.head.appendChild( atu_script );
+
+}; 
+
+var addIMEs = function(by_button) {
+
+  $(".polyanno-enable-IME").html(atu_IME_HTML);
+/*
+  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/libs/rangy/rangy-core.js");
+  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.js");
+  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.selector.js");
+  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.preferences.js");
+  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.inputmethods.js");
+*/
+
+  atu_load_scripts("libs/rangy-core.js");
+  atu_load_scripts("libs/jquery.ime.js");
+  atu_load_scripts("libs/jquery.ime.selector.js");
+  atu_load_scripts("libs/jquery.ime.preferences.js");
+  atu_load_scripts("libs/jquery.ime.inputmethods.js");
+
+  if (by_button == true) && (atu_no_of_scripts_loaded == 5) {
+    $(".polyanno-enable-IME").css("display", "none");
+    
+    $(".polyanno-add-ime").on("click", function(event){
+      if ($(this).hasClass("polyanno-IME-options-open")) {
+        $(".polyanno-add-ime").addClass("polyanno-IME-options-closed").removeClass("polyanno-IME-options-open");
+        $(".polyanno-enable-IME").css("display", "none");
+      }
+      else {
+        $(".polyanno-add-ime").addClass("polyanno-IME-options-open").removeClass("polyanno-IME-options-closed");
+        $(".polyanno-enable-IME").css("display", "inline-block");
+        $langSelector = $( 'select#polyanno-lang-selector' );
+        $imeSelector = $( 'select#polyanno-ime-selector' );
+      };
+    });
+  };
+
+};
 
 var atu_has_setup_initialised = false; 
 
@@ -1094,20 +1154,6 @@ var atu_initialise_setup = function(atu_parent_id) {
   atu_has_setup_initialised = true;
 
 };
-
-
-$(".polyanno-add-ime").on("click", function(event){
-  if ($(this).hasClass("polyanno-IME-options-open")) {
-    $(".polyanno-add-ime").addClass("polyanno-IME-options-closed").removeClass("polyanno-IME-options-open");
-    $(".polyanno-enable-IME").css("display", "none");
-  }
-  else {
-    $(".polyanno-add-ime").addClass("polyanno-IME-options-open").removeClass("polyanno-IME-options-closed");
-    $(".polyanno-enable-IME").css("display", "inline-block");
-    $langSelector = $( 'select#polyanno-lang-selector' );
-    $imeSelector = $( 'select#polyanno-ime-selector' );
-  };
-});
 
 var addKeyboard = function(atu_parent_id) {
 
