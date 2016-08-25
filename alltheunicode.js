@@ -372,7 +372,7 @@ var loadUnicodeData = function() {
 
   $.ajax({
   type: "GET",
-  url: "http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt",
+  url: "unicodetext.txt",
   async: false,
   success: 
     function (data) {
