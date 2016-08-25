@@ -347,6 +347,25 @@ var uD = [];
 
 var atu_the_data;
 
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    // Check if the XMLHttpRequest object has a "withCredentials" property - "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, false);
+
+  } else if (typeof XDomainRequest != "undefined") {
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+};
+
 var loadUnicodeData = function() {
 
   var udata;
@@ -361,6 +380,16 @@ var loadUnicodeData = function() {
     }
   });
 
+  /////so basically Chrome hates me and Jquery AJAX and nothing appears to set the headers properly to allow CORS
+/*
+  var atu_xhr = new XMLHttpRequest(); //createCORSRequest('GET', "http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt");
+  atu_xhr.open('GET', "http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt", false);
+  atu_xhr.onload = function() {
+      udata = atu_xhr.response;
+    };
+
+  atu_xhr.send();
+*/
   var lines = udata.split('\n');
   for(var i=0; i < (lines.length-1); i++) {
         var entry = lines[i].split(';');
@@ -1053,6 +1082,7 @@ var atu_initialise_setup = function(atu_parent_id) {
   });
 
   var atu_new_style = document.createElement('style');
+  //notoemoji-regular, notosanstc-regular, notosanssc-regular, notosansmonocjktc-regular, notosansmonocjksc-regular, notosansmonocjkkr-regular, notosansmonocjkjp-regular, notosanskr-regular, notosansjp-regular, notosanscjktc-regular, notosanscjksc-regular, notosanscjkkr-regular, notosanscjkjp-regular, notosanscjk-regular, notoserifthai-regular, notoseriftelugu-regular, notoseriftamil-regular, notoserifmalayalam-regular, notoseriflao-regular, notoserifkhmer-regular, notoserifkannada-regular, notoserifgujarati-regular, notoserifgeorgian-regular, notoserifdevanagari-regular, notoserifbengali-regular, notoserifarmenian-regular, notoserif-regular, notosansyi-regular, notosansvai-regular, notosansugaritic-regular, notosansui-regular, notosanstifinagh-regular, notosanstibetan-regular, notosansthaiui-regular, notosansthai-regular, notosansthaana-regular, notosansteluguui-regular, notosanstelugu-regular, notosanstamilui-regular, notosanstamil-regular, notosanstaiviet-regular, notosanstaitham-regular, notosanstaile-regular, notosanstagbanwa-regular, notosanstagalog-regular, notosanssyriacwestern-regular, notosanssyriacestrangela-regular, notosanssyriaceastern-regular, notosanssymbols-regular, notosanssylotinagri-regular, notosanssundanese-regular, notosanssinhala-regular, notosansshavian-regular, notosanssaurashtra-regular, notosanssamaritan-regular, notosansrunic-regular, notosansrejang-regular, notosansphoenician-regular, notosansphagspa-regular, notosansosmanya-regular, notosansoriyaui-regular, notosansoriya-regular, notosansoldturkic-regular, notosansoldsoutharabian-regular, notosansoldpersian-regular, notosansolditalic-regular, notosansolchiki-regular, notosansogham-regular, notosansnewtailue-regular, notosansnko-regular, notosansmyanmarui-regular, notosansmyanmar-regular, notosansmongolian-regular, notosansmeeteimayek-regular, notosansmandaic-regular, notosansmalayalamui-regular, notosansmalayalam-regular, notosanslydian-regular, notosanslycian-regular, notosanslisu-regular, notosanslinearb-regular, notosanslimbu-regular, notosanslepcha-regular, notosanslaoui-regular, notosanslao-regular, notosanskhmerui-regular, notosanskhmer-regular, notosanskharoshthi-regular, notosanskayahli-regular, notosanskannadaui-regular, notosanskannada-regular, notosanskaithi-regular, notosansjavanese-regular, notosansinscriptionalparthian-regular, notosansinscriptionalpahlavi-regular, notosansimperialaramaic-regular, notosanshebrew-regular, notosanshanunoo-regular, notosansgurmukhiui-regular, notosansgurmukhi-regular, notosansgujaratiui-regular, notosansgujarati-regular, notosansgothic-regular, notosansglagolitic-regular, notosansgeorgian-regular, notosansethiopic-regular, notosansegyptianhieroglyphs-regular, notosansdevanagariui-regular, notosansdevanagari-regular, notosansdeseret-regular, notosanscypriot-regular, notosanscuneiform-regular, notosanscoptic-regular, notosanscherokee-regular, notosanscham-regular, notosanscarian-regular, notosanscanadianaboriginal-regular, notosansbuhid-regular, notosansbuginese-regular, notosansbrahmi-regular, notosansbengaliui-regular, notosansbengali-regular, notosansbatak-regular, notosansbamum-regular, notosansbalinese-regular, notosansavestan-regular, notosansarmenian-regular, notosans-regular, notosans-regular, notonastaliqurdu-regular, notonaskharabicui-regular, notonaskharabic-regular, notokufiarabic-regular, lastresort, Helvetica, Arial, sans-serif ;
   atu_new_style.appendChild(document.createTextNode(`
 @import url(https://cdn.rawgit.com/BluePigeons/alltheunicode/master/atu_fonts.css);
 .c {
