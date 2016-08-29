@@ -23,7 +23,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
-
 </head>
 
 
@@ -35,6 +34,8 @@
 <div id="main page" class="container">
 
 	<div class="row">
+
+		<div class="polyanno-enable-IME"></div>
 
 		<textarea id="test_text_area"></textarea>
 		<p>Testing <span id="testingThis"></span></p>
@@ -60,7 +61,10 @@
 
 	atu_the_data = document.getElementById("test_text_area");
   	addKeyboard("test-page-body");
-  	document.getElementById("testingThis").innerHTML = "\uD83D\uDE5D";
+  	document.getElementById("testingThis").innerHTML = " 🙀🙁🙂🙃🙄🙅🙆🙇🙈 🛰🛱🛲🛳🛴🛵🛶  \uD83D\uDE5D";
+  	var thisArea = "$('#test_text_area')";
+  	var theStuff = "addIMEoptions(" + thisArea + ")";
+  	addIMEs( false, theStuff );
 
 </script>
 
