@@ -23,6 +23,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+	<script type="text/javascript" src="libs/rangy-core.js"></script>
+	<script type="text/javascript" src="libs/jquery.ime.js"></script>
+	<script type="text/javascript" src="libs/jquery.ime.selector.js"></script>
+	<script type="text/javascript" src="libs/jquery.ime.preferences.js"></script>
+	<script type="text/javascript" src="libs/jquery.ime.inputmethods.js"></script>
+
 </head>
 
 
@@ -62,9 +68,8 @@
 	atu_the_data = document.getElementById("test_text_area");
   	addKeyboard("test-page-body");
   	document.getElementById("testingThis").innerHTML = " 🙀🙁🙂🙃🙄🙅🙆🙇🙈 🛰🛱🛲🛳🛴🛵🛶  \uD83D\uDE5D";
-  	var thisArea = "$('#test_text_area')";
-  	var theStuff = "addIMEoptions(" + thisArea + ")";
-  	addIMEs( false, theStuff );
+  	atu_the_inputs = '#test_text_area';
+  	addIMEs( false, addIMEoptions );
 
 </script>
 

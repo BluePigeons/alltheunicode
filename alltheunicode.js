@@ -968,8 +968,11 @@ var atu_IME_HTML = `
       </div>
 `;
 
-var addIMEoptions = function(thisArea) {
-  alert(thisArea.attr("id"));
+var atu_the_inputs;
+
+var addIMEoptions = function() {
+  var thisArea = $(atu_the_inputs);
+  //alert(thisArea.attr("id"));
   thisArea.ime({
     showSelector: false
   });
@@ -1034,14 +1037,18 @@ var addIMEs = function(by_button, callback_function) {
 */
 
   ///because of different storage locations of rangy-core and the rules folder the wikimedia versions are slightly different to the ones in ATU
+  ////https://cdn.rawgit.com/BluePigeons/alltheunicode/master/
+  /*
+  atu_load_scripts("libs/rangy-core.js");
+  atu_load_scripts("libs/jquery.ime.js");
+  atu_load_scripts("libs/jquery.ime.selector.js");
+  atu_load_scripts("libs/jquery.ime.preferences.js");
+  atu_load_scripts("libs/jquery.ime.inputmethods.js");
+*/
 
-  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js");
-  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js");
-  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js");
-  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js");
-  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js");
+  atu_no_of_scripts_loaded = 5;
 
-  if ((by_button == true) && (atu_no_of_scripts_loaded == 5)) {
+  if ( by_button && (atu_no_of_scripts_loaded == 5)) {
     $(".polyanno-enable-IME").css("display", "none");
     
     $(".polyanno-add-ime").on("click", function(event){
@@ -1056,9 +1063,13 @@ var addIMEs = function(by_button, callback_function) {
         $imeSelector = $( 'select#polyanno-ime-selector' );
       };
     });
+  }
+  else if (( by_button == false ) && (atu_no_of_scripts_loaded == 5)) {
+    $langSelector = $( 'select#polyanno-lang-selector' );
+    $imeSelector = $( 'select#polyanno-ime-selector' );
   };
 
-  if (atu_no_of_scripts_loaded == 5) { callback_function ; return true; };
+  callback_function();
 
 };
 
