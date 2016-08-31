@@ -34,11 +34,16 @@
 <div data-role="main" class="ui-content">
 <div id="main page" class="container">
 
+
+	<div class="row"><div class="polyanno-enable-IME"></div></div>
 	<div class="row">
 
 		<button class="btn btn-default add-keyboard" type="button">
 			<span class="glyphicon glyphicon-plus"></span>
 			<span class="glyphicon glyphicon-th"></span><span class="glyphicon glyphicon-th"></span>
+		</button> 
+		<button class="btn btn-default polyanno-add-ime" type="button">
+			<span class="glyphicon glyphicon-plus"></span>
 		</button> 
 
 		<textarea id="test_text_area"></textarea>
@@ -63,10 +68,11 @@
 <script>
 
 	atu_the_data = document.getElementById("test_text_area");
-
+  	atu_the_inputs = '#test_text_area';
 	$(".add-keyboard").on("click", function(){
 		addKeyboard("test-page-body");
 	});
+	addIMEs( true, addIMEoptions );
 
 </script>
 

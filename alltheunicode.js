@@ -1012,7 +1012,7 @@ var addIMEoptions = function() {
 
 var atu_no_of_scripts_loaded = 0;
 
-var atu_load_scripts = function(the_src) {
+var atu_load_scripts = function(the_src, callback_func) {
 
   var atu_script = document.createElement( 'script' );
   atu_script.type = 'text/javascript';
@@ -1020,6 +1020,7 @@ var atu_load_scripts = function(the_src) {
   atu_script.setAttribute( 'src', the_src );
   atu_script.onload = function() {
     atu_no_of_scripts_loaded += 1;
+    callback_func();
   };
   document.head.appendChild( atu_script );
 
@@ -1028,48 +1029,42 @@ var atu_load_scripts = function(the_src) {
 var addIMEs = function(by_button, callback_function) {
 
   $(".polyanno-enable-IME").html(atu_IME_HTML);
-/*
-  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/libs/rangy/rangy-core.js");
-  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.js");
-  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.selector.js");
-  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.preferences.js");
-  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.inputmethods.js");
-*/
+
+  var setupIMElisteners = function() {
+
+    if ( by_button ) {
+      $(".polyanno-enable-IME").css("display", "none");
+      
+      $(".polyanno-add-ime").on("click", function(event){
+        if ($(this).hasClass("polyanno-IME-options-open")) {
+          $(".polyanno-add-ime").addClass("polyanno-IME-options-closed").removeClass("polyanno-IME-options-open");
+          $(".polyanno-enable-IME").css("display", "none");
+        }
+        else {
+          $(".polyanno-add-ime").addClass("polyanno-IME-options-open").removeClass("polyanno-IME-options-closed");
+          $(".polyanno-enable-IME").css("display", "inline-block");
+          $langSelector = $( 'select#polyanno-lang-selector' );
+          $imeSelector = $( 'select#polyanno-ime-selector' );
+          callback_function();
+        };
+      });
+    }
+    else if ( !by_button ) {
+      $langSelector = $( 'select#polyanno-lang-selector' );
+      $imeSelector = $( 'select#polyanno-ime-selector' );
+      callback_function();
+    };
+  };
+
+  var loadScript2 = function() {  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
+  var loadScript3 = function() {  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
+  var loadScript4 = function() {  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
+  var loadScript5 = function() {  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js", setupIMElisteners);  };
 
   ///because of different storage locations of rangy-core and the rules folder the wikimedia versions are slightly different to the ones in ATU
   ////https://cdn.rawgit.com/BluePigeons/alltheunicode/master/
-  /*
-  atu_load_scripts("libs/rangy-core.js");
-  atu_load_scripts("libs/jquery.ime.js");
-  atu_load_scripts("libs/jquery.ime.selector.js");
-  atu_load_scripts("libs/jquery.ime.preferences.js");
-  atu_load_scripts("libs/jquery.ime.inputmethods.js");
-*/
 
-  atu_no_of_scripts_loaded = 5;
-
-  if ( by_button && (atu_no_of_scripts_loaded == 5)) {
-    $(".polyanno-enable-IME").css("display", "none");
-    
-    $(".polyanno-add-ime").on("click", function(event){
-      if ($(this).hasClass("polyanno-IME-options-open")) {
-        $(".polyanno-add-ime").addClass("polyanno-IME-options-closed").removeClass("polyanno-IME-options-open");
-        $(".polyanno-enable-IME").css("display", "none");
-      }
-      else {
-        $(".polyanno-add-ime").addClass("polyanno-IME-options-open").removeClass("polyanno-IME-options-closed");
-        $(".polyanno-enable-IME").css("display", "inline-block");
-        $langSelector = $( 'select#polyanno-lang-selector' );
-        $imeSelector = $( 'select#polyanno-ime-selector' );
-      };
-    });
-  }
-  else if (( by_button == false ) && (atu_no_of_scripts_loaded == 5)) {
-    $langSelector = $( 'select#polyanno-lang-selector' );
-    $imeSelector = $( 'select#polyanno-ime-selector' );
-  };
-
-  callback_function();
+  atu_load_scripts("https://cdn.rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
 
 };
 
