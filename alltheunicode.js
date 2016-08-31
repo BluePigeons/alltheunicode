@@ -372,7 +372,7 @@ var loadUnicodeData = function() {
 
   $.ajax({
   type: "GET",
-  url: "unicodetext.txt",
+  url: "https://rawgit.com/BluePigeons/alltheunicode/master/unicodetext.txt",
   async: false,
   success: 
     function (data) {
