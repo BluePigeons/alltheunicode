@@ -51,7 +51,7 @@
 	</div>
 
 
-	<div class="row" id="test-page-body">
+	<div class="row atu-keyboard-parent" id="test-page-body">
 
 
 	</div>
@@ -67,10 +67,9 @@
 
 <script>
 
-	atu_the_data = document.getElementById("test_text_area");
-  	atu_the_inputs = '#test_text_area';
+	atu_the_input = document.getElementById("test_text_area");
 	$(".add-keyboard").on("click", function(){
-		addKeyboard("test-page-body");
+		addKeyboard();
 	});
 	addIMEs( true, addIMEoptions );
 
