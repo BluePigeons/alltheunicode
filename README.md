@@ -49,11 +49,11 @@ Alltheunicode uses the [Wikimedia JQuery IME extension library](https://github.c
 
 You can manually load the libraries for this either by downloading and storing locally or using the Rawgit URLs of the following files (in that order):
 
-"https://rawgit.com/wikimedia/jquery.ime/master/libs/rangy/rangy-core.js"
+"https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js"
 "https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js"
-"https://rawgit.com/wikimedia/jquery.ime/master/src/libs/jquery.ime.selector.js"
-"https://rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.preferences.js"
-"https://rawgit.com/wikimedia/jquery.ime/master/src/jquery.ime.inputmethods.js"
+"https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js"
+"https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js"
+"https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js"
 
 Or alternatively you can use the **active_load** option in the addIMEs function that allows you ATU to dynamically load for you.
 
