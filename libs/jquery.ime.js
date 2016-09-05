@@ -787,7 +787,7 @@
 	/**
 	 * @property {string} Relative/absolute path for the rules folder of jquery.ime //////////
 	 */
-	$.ime.path = 'https://rawgit.com/wikimedia/jquery.ime/tree/master/'; //////
+	$.ime.path = 'https://rawgit.com/BluePigeons/alltheunicode/master/libs/'; //////
 	$.ime.textEntryFactory = TextEntryFactory.static.singleton;
 	$.ime.TextEntry = TextEntry;
 	$.ime.inheritClass = inheritClass;

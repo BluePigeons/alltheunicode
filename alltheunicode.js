@@ -31540,7 +31540,8 @@ var atu_initialise_setup = function() {
   });
 
   $(".atu-keyboard-parent").on("mouseover", ".c", function(event){
-//////show value????
+    var atu_unicode_name = $(event.target).attr("data-info");
+    ///display as popover?
   });
 /*
   var atu_new_style = document.createElement('style');

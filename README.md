@@ -33,6 +33,8 @@ addKeyboard(dragon_opts);
 
 Once open, users can select between the blocks of Unicode ranges and the corresponding keyboards will load.
 
+For an example of a basic setup of a keyboard see [this Demo](https://jsfiddle.net/BluePigeons/7u42vxf7/2/).
+
 Within addKeyboard function, if the setup has not been initialised then it will be done automatically the first time that addKeyboard is run and then not repeated after that. This function takes not inputs and initialises the event listeners to the keyboard based on whatever element(s) have the parent classname mentioned earlier. If the elements with that classname changes then the event listeners might not respond properly and so you may need to run the function again manually:
 
 ```
