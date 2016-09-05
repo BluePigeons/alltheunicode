@@ -802,9 +802,10 @@
     src: url('fonts/noto_emojis/NotoEmoji-Regular.ttf') ;
     unicode-range: U+??;
 }
-      
+/*      
 @font-face {
     font-family: notocoloremoji;
     src: url('fonts/noto_emojis/NotoColorEmoji.ttf') ;
     unicode-range: U+??;
 }
+*/
