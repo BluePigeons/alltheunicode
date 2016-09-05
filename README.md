@@ -68,7 +68,9 @@ addIMEs(by_button, initialise_options, active_load)
  - **initialise_options** - (Boolean) If true then event listeners will be setup automatically for the areas defined by "atu_the_input" and for the IME selection options menu being loaded. Recommended to set to true.
  - **active_load** - (Boolean) If true then it will actively load the relevant Wikimedia JQuery extension files only in response to this function (see earlier for more info).
 
-For an example of a basic demo simply loading the options menus see [demo here](#).
+For an example of a basic demo simply loading the options menus see [demo here](https://jsfiddle.net/BluePigeons/huzka0m0/).
+
+To see an example with dynamic loading of IMEs and keyboards see [demo here](https://jsfiddle.net/BluePigeons/81woy92z/)
 
 If you want to manually initialise the IME event listeners then you can do so by running the function atu_initialise_IMEs function like so:
 
