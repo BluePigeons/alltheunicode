@@ -31388,9 +31388,8 @@ var atu_setup_IME_area1 = function(thisArea) {
 
 var atu_initialise_IMEs = function() {
 
-  var thisArea = $(atu_the_input);
-  if (!isUseless(thisArea)) {
-    atu_setup_IME_area1(thisArea);
+  if (!isUseless(atu_the_input)) {
+    atu_setup_IME_area1(atu_the_input);
   };
 
 }; 
