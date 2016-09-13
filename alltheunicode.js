@@ -31562,14 +31562,13 @@ var atu_initialise_setup = function() {
 
 var new_atu_map_body_id;
 
-var addKeyboard = function(the_drag_options) {
+var addKeyboard = function(the_drag_options, initialise_dd) {
 
   var newKeyboardIDwithHash = add_dragondrop_pop("keyboardPopup", atu_main_HTML, $(".atu-keyboard-parent").attr("id"), the_drag_options.minimise,  atu_handlebar_HTML);
   new_atu_map_body_id = Math.random().toString().substring(2);
   $(newKeyboardIDwithHash).find(".atu-mapPopupBody").attr("id", new_atu_map_body_id );
-  initialise_dragondrop( $(".atu-keyboard-parent").attr("id"), the_drag_options );
-  if (atu_has_setup_initialised == false) { atu_initialise_setup(); };
-
+  if (!atu_has_setup_initialised) { atu_initialise_setup(); };
+  if (initialise_dd) { initialise_dragondrop( $(".atu-keyboard-parent").attr("id"), the_drag_options ); };
 };
 
 /////take unicode range options???
