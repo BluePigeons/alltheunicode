@@ -31388,17 +31388,12 @@ var atu_setup_IME_area1 = function(thisArea) {
 };
 
 var atu_initialise_IMEs = function(an_input_DOM) {
-
-  if (!isUseless(an_input_DOM)) {
+  if ( (!isUseless(an_input_DOM)) && (atu_have_all_ime_scripts_loaded) ) {
   	atu_the_input = an_input_DOM;
   	atu_setup_IME_area1(an_input_DOM);
   }
-  else if (!isUseless(atu_the_input)) {
-  	alert("this area is here "+atu_the_input);
+  else if ( (!isUseless(atu_the_input)) && (atu_have_all_ime_scripts_loaded) ) {
     atu_setup_IME_area1(atu_the_input);
-  }
-  else {
-  	alert("you haven't defined an input area yet!")
   };
 
 }; 
@@ -31410,57 +31405,95 @@ var atu_load_scripts = function(the_src, callback_func) {
   //atu_script.async = true; ////???
   atu_script.setAttribute( 'src', the_src );
   atu_script.onload = function() {
-    callback_func();
+  	if (!isUseless(callback_func)) {
+  		callback_func();
+  	};
   };
   document.head.appendChild( atu_script );
 
 }; 
 
-var addIMEs = function(by_button, initialise_options, active_load) {
+var atu_have_all_ime_scripts_loaded = false;
 
-  $(".polyanno-enable-IME").html(atu_IME_HTML);
+var atu_all_the_ime_scripts_have_now_loaded = function() {
+	atu_have_all_ime_scripts_loaded = true;
+};
 
-  var setupIMElisteners = function() {
+var atu_all_the_scripts = function(callback_func) {
 
-    if ( by_button ) {
-      $(".polyanno-enable-IME").css("display", "none");
-      
-      $(".polyanno-add-ime").on("click", function(event){
-        if ($(this).hasClass("polyanno-IME-options-open")) {
-          $(".polyanno-add-ime").addClass("polyanno-IME-options-closed").removeClass("polyanno-IME-options-open");
-          $(".polyanno-enable-IME").css("display", "none");
-        }
-        else {
-          $(".polyanno-add-ime").addClass("polyanno-IME-options-open").removeClass("polyanno-IME-options-closed");
-          $(".polyanno-enable-IME").css("display", "inline-block");
-          $langSelector = $( 'select#polyanno-lang-selector' );
-          $imeSelector = $( 'select#polyanno-ime-selector' );
-          if (initialise_options) { atu_initialise_IMEs(); };
-        };
-      });
-    }
-    else if ( !by_button ) {
-      $langSelector = $( 'select#polyanno-lang-selector' );
-      $imeSelector = $( 'select#polyanno-ime-selector' );
-      if (initialise_options) { atu_initialise_IMEs(); };
-    };
-  };
+	var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
+  	var loadScript3 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
+  	var loadScript4 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
+  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js");  atu_all_the_ime_scripts_have_now_loaded ;
 
-  var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
-  var loadScript3 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
-  var loadScript4 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
-  var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js", setupIMElisteners);  };
+	atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
 
-  ///because of different storage locations of rangy-core and the rules folder the wikimedia versions are slightly different to the ones in ATU
+	///because of different storage locations of rangy-core and the rules folder the wikimedia versions are slightly different to the ones in ATU
   ////https://cdn.rawgit.com/BluePigeons/alltheunicode/master/
   ////without CDN in the URL, it always returns the latest Github files BUT throttles traffic
   ////with CDN in the URL, it returns whatever you last submitted to rawgit.com BUT with virtually unlimited traffic
   ////the separate functions as callbacks is necessary because of Javascript being synchronous - they load in the wrong order otherwise
-  if (active_load) {
-    atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
+
+	var check_for_script_loading = true;
+	while (check_for_script_loading) {
+		if (atu_have_all_ime_scripts_loaded && (!isUseless(callback_func))) {
+			callback_func();
+			check_for_script_loading = false;
+		}
+		else if (atu_have_all_ime_scripts_loaded){
+			check_for_script_loading = false;
+		};
+	};
+
+};
+
+var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
+
+	if ( by_button ) {
+	  $(".polyanno-enable-IME").css("display", "none");
+	  
+	  $(".polyanno-add-ime").on("click", function(event){
+	    if ($(this).hasClass("polyanno-IME-options-open")) {
+	      $(".polyanno-add-ime").addClass("polyanno-IME-options-closed").removeClass("polyanno-IME-options-open");
+	      $(".polyanno-enable-IME").css("display", "none");
+	    }
+	    else {
+	      $(".polyanno-add-ime").addClass("polyanno-IME-options-open").removeClass("polyanno-IME-options-closed");
+	      $(".polyanno-enable-IME").css("display", "inline-block");
+	      $langSelector = $( 'select#polyanno-lang-selector' );
+	      $imeSelector = $( 'select#polyanno-ime-selector' );
+
+	      if (scripted_btn && (!atu_have_all_ime_scripts_loaded)) {	atu_all_the_scripts(atu_initialise_IMEs);  }
+	      else if (initialise_options) { atu_initialise_IMEs(); };
+	    };
+	  });
+	}
+	else if ( !by_button ) {
+	  $langSelector = $( 'select#polyanno-lang-selector' );
+	  $imeSelector = $( 'select#polyanno-ime-selector' );
+	  if (initialise_options) { atu_initialise_IMEs(); };
+	};
+};
+
+var addIMEs = function(by_button, initialise_text_boxes, active_load, scripted_btn) {
+
+  $(".polyanno-enable-IME").html(atu_IME_HTML);
+
+  if ((active_load) && (!atu_have_all_ime_scripts_loaded) && (scripted_btn)) {
+  	setupIMElisteners(by_button, initialise_text_boxes, true);
+  }
+  else if ((active_load) && (!atu_have_all_ime_scripts_loaded)) {
+    atu_all_the_scripts();
+    var check_for_script_loading = true;
+    while (check_for_script_loading) {
+    	if (atu_have_all_ime_scripts_loaded) {
+    		setupIMElisteners(by_button, initialise_text_boxes);
+    		check_for_script_loading = false;
+    	};
+    };
   }
   else {
-    setupIMElisteners();
+    setupIMElisteners(by_button, initialise_options);
   };
 
 };

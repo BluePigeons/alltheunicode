@@ -45,6 +45,21 @@ atu_initialise_setup();
 
 IMEs are Input Method Editors, methods of mapping one keyboard input to another set of Unicode characters, normally from traditional Western Latin alphabet keyboards to languages that are difficult to input by individual alphabet characters. The pattern of mapping varies from IME to IME, often with multiple different IMEs available for different languages - for example Latin keyboard to Mandarin Chinese can be done with a Pinyin IME, with the pattern of writing out the characters in a format and then typing a number at the end to select the choice of tone.
 
+
+###Setting Up The IMEs
+
+To add the IME options you need to define the element that the IME options are to be loaded in by labelling it with classname "polyanno-enable-IME" and then run the function **addIMEs** that takes three options:
+
+```
+addIMEs(by_button, initialise_options, active_load, scripted_btn)
+```
+ - **by_button** - (Boolean) If true then the function will look for button(s) with class "polyanno-add-ime" to be clicked to enable IMEs.
+ - **initialise_options** - (Boolean) If true then event listeners will be setup automatically for the areas defined by "atu_the_input" and for the IME selection options menu being loaded. Recommended to set to true.
+ - **active_load** - (Boolean) If true then it will actively load the relevant Wikimedia JQuery extension files when running the addIME function.
+ - **scripted_btn** - (Boolean) If true then it will actively load the relevant Wikimedia JQuery extension files when a button with class "polyanno-add-ime" is used for the first time in the page.
+
+###Using Wikimedia JQuery Library
+
 Alltheunicode uses the [Wikimedia JQuery IME extension library](https://github.com/wikimedia/jquery.ime) to allow you to dynamically generate IME options for a wide range of languages. The plain Wikimedia JQuery extension was difficult to use for dynamically generated input areas, hence the development of its incorporation to this.
 
 You can manually load the libraries for this either by downloading and storing locally or using the Rawgit URLs of the following files (in that order):
@@ -55,18 +70,13 @@ You can manually load the libraries for this either by downloading and storing l
 "https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js"
 "https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js"
 
-Or alternatively you can use the **active_load** option in the addIMEs function that allows you ATU to dynamically load for you.
+Or alternatively you can use the options in the addIME() function:
+- the **active_load** option allows ATU to dynamically load the Wikimedia library for you when you addIME()
+- the **scripted_btn** option allows ATU to dynamically load the Wikimedia library for you when the "polyanno-add-ime" button is used for the first time
 
 Whichever method you use, it is important to use the ATU version of the jquery.ime.js file as that specifies a different path for loading the rules for each language, as otherwise the whole folder needs to be added to the site manually each time.
 
-To add the IME options you need to define the element that the IME options are to be loaded in by labelling it with classname "polyanno-enable-IME" and then run the function **addIMEs** that takes three options:
-
-```
-addIMEs(by_button, initialise_options, active_load)
-```
- - **by_button** - (Boolean) If true then the function will look for button(s) with class "polyanno-add-ime" to be clicked to enable IMEs.
- - **initialise_options** - (Boolean) If true then event listeners will be setup automatically for the areas defined by "atu_the_input" and for the IME selection options menu being loaded. Recommended to set to true.
- - **active_load** - (Boolean) If true then it will actively load the relevant Wikimedia JQuery extension files only in response to this function (see earlier for more info).
+###Examples
 
 For an example of a basic demo simply loading the options menus see [demo here](https://jsfiddle.net/BluePigeons/huzka0m0/).
 
