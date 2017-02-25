@@ -31462,8 +31462,12 @@ var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
 	      $(".polyanno-enable-IME").css("display", "inline-block");
 	      $langSelector = $( 'select#polyanno-lang-selector' );
 	      $imeSelector = $( 'select#polyanno-ime-selector' );
+	      alert("opening the IME selection menu");
 
-	      if (scripted_btn && (!atu_have_all_ime_scripts_loaded)) {	atu_all_the_scripts(atu_initialise_IMEs);  }
+	      if (scripted_btn && (!atu_have_all_ime_scripts_loaded)) {	
+	      	alert("opening the IMEs for the first time");
+	      	atu_all_the_scripts(atu_initialise_IMEs);  
+	      }
 	      else if (initialise_options) { atu_initialise_IMEs(); };
 	    };
 	  });
