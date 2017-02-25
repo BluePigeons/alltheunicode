@@ -31376,6 +31376,7 @@ var atu_setup_IME_area2 = function(thisArea, theCurrentIME) {
 };
 
 var atu_setup_IME_area1 = function(thisArea) {
+
   thisArea.ime({
     showSelector: false
   });
@@ -31386,10 +31387,18 @@ var atu_setup_IME_area1 = function(thisArea) {
   };
 };
 
-var atu_initialise_IMEs = function() {
+var atu_initialise_IMEs = function(an_input_DOM) {
 
-  if (!isUseless(atu_the_input)) {
+  if (!isUseless(an_input_DOM)) {
+  	atu_the_input = an_input_DOM;
+  	atu_setup_IME_area1(an_input_DOM);
+  }
+  else if (!isUseless(atu_the_input)) {
+  	alert("this area is here "+atu_the_input);
     atu_setup_IME_area1(atu_the_input);
+  }
+  else {
+  	alert("you haven't defined an input area yet!")
   };
 
 }; 
