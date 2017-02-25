@@ -31424,7 +31424,7 @@ var atu_all_the_scripts = function(callback_func) {
 	var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
   	var loadScript3 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
   	var loadScript4 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
-  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js");  atu_all_the_ime_scripts_have_now_loaded ;
+  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js");  atu_all_the_ime_scripts_have_now_loaded };
 
 	atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
 
