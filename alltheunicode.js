@@ -31377,6 +31377,8 @@ var atu_setup_IME_area2 = function(thisArea, theCurrentIME) {
 
 var atu_setup_IME_area1 = function(thisArea) {
 
+	alert("the html of the area is "+thisArea.html());
+
   thisArea.ime({
     showSelector: false
   });
