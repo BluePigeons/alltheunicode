@@ -31377,14 +31377,13 @@ var atu_setup_IME_area2 = function(thisArea, theCurrentIME) {
 
 var atu_setup_IME_area1 = function(thisArea) {
 
-	alert("the html of the area is "+thisArea.html());
-
   thisArea.ime({
     showSelector: false
   });
   var theCurrentIME = thisArea.data( 'ime' );
   theCurrentIME.enable();
   if (!isUseless($langSelector)) {
+  	alert("starting the second part now");
     atu_setup_IME_area2(thisArea, theCurrentIME);
   };
 };
@@ -31421,6 +31420,7 @@ var atu_load_scripts = function(the_src, callback_func, callback_var) {
 var atu_have_all_ime_scripts_loaded = false;
 
 var atu_all_the_ime_scripts_have_now_loaded = function(callback_func) {
+	alert("all the scripts have loaded now");
 	atu_have_all_ime_scripts_loaded = true;
 	callback_func();
 };
@@ -31447,6 +31447,8 @@ var atu_all_the_scripts = function(callback_func) {
 };
 
 var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
+
+	alert("setting up event listeners now");
 
 	if ( by_button ) {
 	  $(".polyanno-enable-IME").css("display", "none");
