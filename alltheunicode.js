@@ -31398,15 +31398,17 @@ var atu_initialise_IMEs = function(an_input_DOM) {
 
 }; 
 
-var atu_load_scripts = function(the_src, callback_func) {
+var atu_load_scripts = function(the_src, callback_func, callback_var) {
 
   var atu_script = document.createElement( 'script' );
   atu_script.type = 'text/javascript';
   //atu_script.async = true; ////???
   atu_script.setAttribute( 'src', the_src );
   atu_script.onload = function() {
-  	if (!isUseless(callback_func)) {
-  		alert("running a callback function");
+  	if (!isUseless(callback_func) && !isUseless(callback_var)) {
+  		callback_func(callback_var);
+  	}
+  	else if (!isUseless(callback_func)) {
   		callback_func();
   	};
   };
@@ -31416,9 +31418,10 @@ var atu_load_scripts = function(the_src, callback_func) {
 
 var atu_have_all_ime_scripts_loaded = false;
 
-var atu_all_the_ime_scripts_have_now_loaded = function() {
-	alert("running the function to set to true");
+var atu_all_the_ime_scripts_have_now_loaded = function(callback_func) {
+	alert("we have all the scripts loaded");
 	atu_have_all_ime_scripts_loaded = true;
+	callback_func();
 };
 
 var atu_all_the_scripts = function(callback_func) {
@@ -31430,7 +31433,7 @@ var atu_all_the_scripts = function(callback_func) {
 	var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
   	var loadScript3 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
   	var loadScript4 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
-  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js", atu_all_the_ime_scripts_have_now_loaded); };
+  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js", atu_all_the_ime_scripts_have_now_loaded, callback_func); };
 
 	atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
 
@@ -31439,11 +31442,6 @@ var atu_all_the_scripts = function(callback_func) {
   ////without CDN in the URL, it always returns the latest Github files BUT throttles traffic
   ////with CDN in the URL, it returns whatever you last submitted to rawgit.com BUT with virtually unlimited traffic
   ////the separate functions as callbacks is necessary because of Javascript being synchronous - they load in the wrong order otherwise
-
-
-	if (atu_have_all_ime_scripts_loaded && (!isUseless(callback_func))) {
-		callback_func();
-	};
 
 };
 
@@ -31479,15 +31477,10 @@ var addIMEs = function(by_button, initialise_text_boxes, active_load, scripted_b
   $(".polyanno-enable-IME").html(atu_IME_HTML);
 
   if ((active_load) && (!atu_have_all_ime_scripts_loaded)) {
-    atu_all_the_scripts();
-
-	if (atu_have_all_ime_scripts_loaded) {
-		alert("now the scripts have loaded adding event listeners");
-		setupIMElisteners(by_button, initialise_text_boxes);
-	}
-	else {
-		alert("nope no scripts so no listeners");
-	};
+  	var run_the_setup = function() {
+  		setupIMElisteners(by_button, initialise_text_boxes);
+  	};
+    atu_all_the_scripts(run_the_setup);
   }
   else {
     setupIMElisteners(by_button, initialise_options);
