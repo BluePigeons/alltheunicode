@@ -31481,14 +31481,15 @@ var addIMEs = function(by_button, initialise_text_boxes, active_load, scripted_b
 
   $(".polyanno-enable-IME").html(atu_IME_HTML);
 
-  if ((active_load) && (!atu_have_all_ime_scripts_loaded) && (scripted_btn)) {
-  	setupIMElisteners(by_button, initialise_text_boxes, true);
-  }
-  else if ((active_load) && (!atu_have_all_ime_scripts_loaded)) {
+  if ((active_load) && (!atu_have_all_ime_scripts_loaded)) {
     atu_all_the_scripts();
 
 	if (atu_have_all_ime_scripts_loaded) {
+		alert("now the scripts have loaded adding event listeners");
 		setupIMElisteners(by_button, initialise_text_boxes);
+	}
+	else {
+		alert("nope no scripts so no listeners");
 	};
   }
   else {
