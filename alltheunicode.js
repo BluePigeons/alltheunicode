@@ -31388,11 +31388,11 @@ var atu_setup_IME_area1 = function(thisArea) {
 };
 
 var atu_initialise_IMEs = function(an_input_DOM) {
-  if ( (!isUseless(an_input_DOM.html())) && (atu_have_all_ime_scripts_loaded) ) {
+  if ( (typeof(an_input_DOM) != 'undefined') && (atu_have_all_ime_scripts_loaded) ) {
   	atu_the_input = an_input_DOM;
   	atu_setup_IME_area1(an_input_DOM);
   }
-  else if ( (!isUseless(atu_the_input.html())) && (atu_have_all_ime_scripts_loaded) ) {
+  else if ( (typeof(an_input_DOM) != 'undefined') && (atu_have_all_ime_scripts_loaded) ) {
     atu_setup_IME_area1(atu_the_input);
   };
 
