@@ -31430,7 +31430,7 @@ var atu_all_the_scripts = function(callback_func) {
 	var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
   	var loadScript3 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
   	var loadScript4 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
-  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js");  atu_all_the_ime_scripts_have_now_loaded };
+  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js", atu_all_the_ime_scripts_have_now_loaded); };
 
 	atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
 
@@ -31463,10 +31463,7 @@ var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
 	      $langSelector = $( 'select#polyanno-lang-selector' );
 	      $imeSelector = $( 'select#polyanno-ime-selector' );
 
-	      if (scripted_btn && (!atu_have_all_ime_scripts_loaded)) {	
-	      	atu_all_the_scripts(atu_initialise_IMEs);  
-	      }
-	      else if (initialise_options) { atu_initialise_IMEs(); };
+	      if (initialise_options) { atu_initialise_IMEs(); };
 	    };
 	  });
 	}
