@@ -31419,7 +31419,6 @@ var atu_load_scripts = function(the_src, callback_func, callback_var) {
 var atu_have_all_ime_scripts_loaded = false;
 
 var atu_all_the_ime_scripts_have_now_loaded = function(callback_func) {
-	alert("we have all the scripts loaded");
 	atu_have_all_ime_scripts_loaded = true;
 	callback_func();
 };
@@ -31446,6 +31445,8 @@ var atu_all_the_scripts = function(callback_func) {
 };
 
 var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
+
+	alert("setting up the event listeners");
 
 	if ( by_button ) {
 	  $(".polyanno-enable-IME").css("display", "none");
