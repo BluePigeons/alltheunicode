@@ -31434,15 +31434,9 @@ var atu_all_the_scripts = function(callback_func) {
   ////with CDN in the URL, it returns whatever you last submitted to rawgit.com BUT with virtually unlimited traffic
   ////the separate functions as callbacks is necessary because of Javascript being synchronous - they load in the wrong order otherwise
 
-	var check_for_script_loading = true;
-	while (check_for_script_loading) {
-		if (atu_have_all_ime_scripts_loaded && (!isUseless(callback_func))) {
-			callback_func();
-			check_for_script_loading = false;
-		}
-		else if (atu_have_all_ime_scripts_loaded){
-			check_for_script_loading = false;
-		};
+
+	if (atu_have_all_ime_scripts_loaded && (!isUseless(callback_func))) {
+		callback_func();
 	};
 
 };
@@ -31486,13 +31480,10 @@ var addIMEs = function(by_button, initialise_text_boxes, active_load, scripted_b
   }
   else if ((active_load) && (!atu_have_all_ime_scripts_loaded)) {
     atu_all_the_scripts();
-    var check_for_script_loading = true;
-    while (check_for_script_loading) {
-    	if (atu_have_all_ime_scripts_loaded) {
-    		setupIMElisteners(by_button, initialise_text_boxes);
-    		check_for_script_loading = false;
-    	};
-    };
+
+	if (atu_have_all_ime_scripts_loaded) {
+		setupIMElisteners(by_button, initialise_text_boxes);
+	};
   }
   else {
     setupIMElisteners(by_button, initialise_options);
