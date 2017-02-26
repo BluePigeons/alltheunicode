@@ -31406,6 +31406,7 @@ var atu_load_scripts = function(the_src, callback_func) {
   atu_script.setAttribute( 'src', the_src );
   atu_script.onload = function() {
   	if (!isUseless(callback_func)) {
+  		alert("running a callback function");
   		callback_func();
   	};
   };
@@ -31416,6 +31417,7 @@ var atu_load_scripts = function(the_src, callback_func) {
 var atu_have_all_ime_scripts_loaded = false;
 
 var atu_all_the_ime_scripts_have_now_loaded = function() {
+	alert("running the function to set to true");
 	atu_have_all_ime_scripts_loaded = true;
 };
 
