@@ -31446,8 +31446,6 @@ var atu_all_the_scripts = function(callback_func) {
 
 var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
 
-	alert("setting up the event listeners");
-
 	if ( by_button ) {
 	  $(".polyanno-enable-IME").css("display", "none");
 	  
@@ -31467,6 +31465,7 @@ var setupIMElisteners = function(by_button, initialise_options, scripted_btn) {
 	  });
 	}
 	else if ( !by_button ) {
+		atu_have_all_ime_scripts_loaded = true;
 	  $langSelector = $( 'select#polyanno-lang-selector' );
 	  $imeSelector = $( 'select#polyanno-ime-selector' );
 	  if (initialise_options) { atu_initialise_IMEs(); };
