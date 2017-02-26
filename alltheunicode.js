@@ -31421,12 +31421,16 @@ var atu_all_the_ime_scripts_have_now_loaded = function() {
 
 var atu_all_the_scripts = function(callback_func) {
 
-	var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
-  	var loadScript3 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.selector.js", loadScript4);  };
-  	var loadScript4 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.preferences.js", loadScript5);  };
-  	var loadScript5 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.inputmethods.js");  atu_all_the_ime_scripts_have_now_loaded };
+	//https://github.com/wikimedia/jquery.ime/tree/master/src
+	//https://cdn.rawgit.com/wikimedia/jquery.ime/tree/master/src/
+	//https://cdn.rawgit.com/wikimedia/jquery.ime/tree/master/libs/rangy/
 
-	atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/rangy-core.js", loadScript2);
+	var loadScript2 = function() {  atu_load_scripts("https://rawgit.com/BluePigeons/alltheunicode/master/libs/jquery.ime.js", loadScript3);  };
+  	var loadScript3 = function() {  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/tree/master/src/jquery.ime.selector.js", loadScript4);  };
+  	var loadScript4 = function() {  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/tree/master/src/jquery.ime.preferences.js", loadScript5);  };
+  	var loadScript5 = function() {  atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/tree/master/src/jquery.ime.inputmethods.js");  atu_all_the_ime_scripts_have_now_loaded };
+
+	atu_load_scripts("https://cdn.rawgit.com/wikimedia/jquery.ime/tree/master/libs/rangy/rangy-core.js", loadScript2);
 
 	///because of different storage locations of rangy-core and the rules folder the wikimedia versions are slightly different to the ones in ATU
   ////https://cdn.rawgit.com/BluePigeons/alltheunicode/master/
