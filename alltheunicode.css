@@ -54,6 +54,7 @@
 }
 .atu-options-btn {
   display: inline-block;
+  height: 100%;
 }
 
 .atu-mapPopupBody {
@@ -61,10 +62,11 @@
   padding-right: 20px;
 }
 
-
-.polyanno-enable-IME {
-  
+.keyRow {
+  display: inline-block;
 }
+
+
 .polyanno-enable-IME-opt {
   display: inline-block;
 }
