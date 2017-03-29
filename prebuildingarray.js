@@ -30671,15 +30671,26 @@ var cgName = {
   Cn: 'Other, not assigned'
 };
 
-thejson.array = loadUnicodeData();
+var thearray = loadUnicodeData();
 
-var jsonstring = JSON.stringify(thejson);
+var customstringify = function(arr) {
+	var initTxt = "var uD = [";
+	for (var i=0; i < arr.length; i++) {
+		if (i == (arr.length - 1)) {
+			initTxt += (JSON.stringify(arr[i])+" ];");
+			return initTxt;
+		}
+		else {
+			initTxt += (JSON.stringify(arr[i])+", \n");
+		};
+	};
+};
 
-var contentString = "var unicodeArrayJSON = {"+jsonstring+"};";
+var jsonstring = customstringify(thearray);
 
 var server = http.createServer(function (req, res) {
  
-    fs.writeFile('latestUnicodeDataArray.js', contentString, 
+    fs.writeFile('latestUnicodeDataArray.js', jsonstring, 
       function (err) {
         if (err) throw err;
         console.log('It\'s saved! in same location.');
